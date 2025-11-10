@@ -16,12 +16,14 @@
         "format": "prettier . --write",
         "predev": "react-dsfr update-icons",
         "prebuild": "react-dsfr update-icons",
-        "prestorybook": "react-dsfr update-icons"
+        "prestorybook": "react-dsfr update-icons",
+        "postinstall": "keycloakify sync-extensions"
     },
     "license": "MIT",
     "keywords": [],
     "dependencies": {
         "@codegouvfr/react-dsfr": "^1.20.2",
+        "@keycloakify/email-native": "~260007.0.0",
         "keycloakify": "^11.9.3",
         "oidc-spa": "^6.9.8",
         "react": "^18.2.0",
