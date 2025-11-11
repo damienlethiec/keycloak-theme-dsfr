@@ -44,23 +44,32 @@
             background-color: #F6F6F6;
         }
 
-        h1, h2, h3 {
-            font-weight: 700;
-            margin: 0 0 16px 0;
-        }
-
+        /* DSFR Typography */
         h1 {
-            font-size: 28px;
-            line-height: 1.25;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 40px;
+            margin: 0 0 24px 0;
         }
 
         h2 {
-            font-size: 22px;
-            line-height: 1.3;
+            font-size: 28px;
+            font-weight: 700;
+            line-height: 36px;
+            margin: 0 0 24px 0;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 32px;
+            margin: 0 0 24px 0;
         }
 
         p {
-            margin: 0 0 16px 0;
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0 0 24px 0;
         }
 
         a {
@@ -68,75 +77,31 @@
             text-decoration: underline;
         }
 
-        /* DSFR Buttons */
+        /* DSFR Button - Conforme au min.css officiel */
         .fr-btn {
-            display: inline-block;
-            padding: 10px 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            min-height: 40px;
             background-color: #000091;
             color: #FFFFFF !important;
-            text-decoration: none;
+            text-decoration: none !important;
+            font-size: 16px;
             font-weight: 500;
-            text-align: center;
-            line-height: 1.5;
+            line-height: 24px;
             border: none;
-            cursor: pointer;
+            border-radius: 0;
             -webkit-font-smoothing: antialiased;
         }
 
         .fr-btn:hover {
-            background-color: #1212FF;
+            background-color: #1212ff;
+            text-decoration: none !important;
         }
 
-        .fr-btn--secondary {
-            background-color: #EEEEEE;
-            color: #161616 !important;
-        }
-
-        .fr-btn--secondary:hover {
-            background-color: #E5E5E5;
-        }
-
-        /* DSFR Alert boxes */
-        .fr-alert {
-            padding: 16px;
-            margin: 24px 0;
-            border-left: 4px solid;
-        }
-
-        .fr-alert--info {
-            background-color: #E8EDFF;
-            border-color: #0063CB;
-            color: #161616;
-        }
-
-        .fr-alert--success {
-            background-color: #B8FEC9;
-            border-color: #18753C;
-            color: #161616;
-        }
-
-        .fr-alert--warning {
-            background-color: #FFE9E6;
-            border-color: #B34000;
-            color: #161616;
-        }
-
-        .fr-alert--error {
-            background-color: #FFE9E9;
-            border-color: #CE0500;
-            color: #161616;
-        }
-
-        /* DSFR Notice (subtle info box) */
-        .fr-notice {
-            padding: 16px;
-            margin: 16px 0;
-            background-color: #F6F6F6;
-            border: 1px solid #E5E5E5;
-        }
-
-        .fr-notice--info {
-            background-color: #F5F5FE;
+        .fr-btn:active {
+            background-color: #2323ff;
         }
 
         /* Responsive */
@@ -147,11 +112,18 @@
             }
 
             h1 {
-                font-size: 24px !important;
+                font-size: 28px !important;
+                line-height: 36px !important;
             }
 
             h2 {
-                font-size: 20px !important;
+                font-size: 24px !important;
+                line-height: 32px !important;
+            }
+
+            h3 {
+                font-size: 22px !important;
+                line-height: 28px !important;
             }
         }
     </style>
