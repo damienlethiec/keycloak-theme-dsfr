@@ -68,42 +68,75 @@
             text-decoration: underline;
         }
 
-        /* DSFR Button */
+        /* DSFR Buttons */
         .fr-btn {
             display: inline-block;
-            padding: 12px 24px;
+            padding: 10px 24px;
             background-color: #000091;
             color: #FFFFFF !important;
             text-decoration: none;
-            border-radius: 4px;
             font-weight: 500;
             text-align: center;
+            line-height: 1.5;
+            border: none;
+            cursor: pointer;
+            -webkit-font-smoothing: antialiased;
         }
 
         .fr-btn:hover {
             background-color: #1212FF;
         }
 
-        /* Alert boxes */
+        .fr-btn--secondary {
+            background-color: #EEEEEE;
+            color: #161616 !important;
+        }
+
+        .fr-btn--secondary:hover {
+            background-color: #E5E5E5;
+        }
+
+        /* DSFR Alert boxes */
         .fr-alert {
             padding: 16px;
-            border-radius: 4px;
             margin: 24px 0;
+            border-left: 4px solid;
         }
 
         .fr-alert--info {
-            background-color: #E3E3FD;
-            border-left: 4px solid #000091;
+            background-color: #E8EDFF;
+            border-color: #0063CB;
+            color: #161616;
         }
 
         .fr-alert--success {
             background-color: #B8FEC9;
-            border-left: 4px solid #18753C;
+            border-color: #18753C;
+            color: #161616;
         }
 
         .fr-alert--warning {
             background-color: #FFE9E6;
-            border-left: 4px solid #B34000;
+            border-color: #B34000;
+            color: #161616;
+        }
+
+        .fr-alert--error {
+            background-color: #FFE9E9;
+            border-color: #CE0500;
+            color: #161616;
+        }
+
+        /* DSFR Notice (subtle info box) */
+        .fr-notice {
+            padding: 16px;
+            margin: 16px 0;
+            background-color: #F6F6F6;
+            border: 1px solid #E5E5E5;
+        }
+
+        .fr-notice--info {
+            background-color: #F5F5FE;
         }
 
         /* Responsive */
