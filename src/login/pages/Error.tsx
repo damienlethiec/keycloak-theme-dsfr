@@ -13,12 +13,17 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
         classes
     });
 
-    const { url, client, statusCode } = kcContext;
+    const { url, client, statusCode, realm } = kcContext;
 
     const { msg } = i18n;
 
     // Detect 404 errors by checking the HTTP status code
     const is404Error = statusCode === 404;
+
+    // Build environment-specific URLs based on realm name
+    const realmName = realm.name;
+    const portailUrl = `https://portail.${realmName}/`;
+    const authUrlPattern = `https://auth.${realmName}/`;
 
     // Show custom 404 message only for page not found errors
     if (is404Error) {
@@ -43,8 +48,8 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
                         👉 Pour vous connecter sur le Portail HubEE, veuillez cliquer sur l'URL suivante :
                     </p>
                     <p>
-                        <a className={fr.cx("fr-link")} href="https://portail.basrec.hubee.numerique.gouv.fr/" target="_blank" rel="noopener noreferrer">
-                            https://portail.basrec.hubee.numerique.gouv.fr/
+                        <a className={fr.cx("fr-link")} href={portailUrl} target="_blank" rel="noopener noreferrer">
+                            {portailUrl}
                         </a>
                     </p>
                 </div>
@@ -52,7 +57,7 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
                 <Alert
                     severity="info"
                     title="💡 NB"
-                    description="Pensez à enregistrer cette adresse dans vos favoris, et à supprimer toute URL commençant par : « https://auth.basrec.hubee.numerique.gouv.fr/ »"
+                    description={`Pensez à enregistrer cette adresse dans vos favoris, et à supprimer toute URL commençant par : « ${authUrlPattern} »`}
                     className={fr.cx("fr-mb-4w")}
                     small
                 />
