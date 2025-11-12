@@ -32,7 +32,10 @@ DSFR_THEME_BRAND_TOP
 DSFR_NOTICE_TITLE
 DSFR_NOTICE_DESCRIPTION
 DSFR_NOTICE_SEVERITY
+HUBEE_DOMAIN
 ```
+
+- **HUBEE_DOMAIN**: Domain used for constructing environment-specific URLs in error pages (e.g., `basrec.hubee.numerique.gouv.fr`). This is used to generate portal and auth URLs dynamically.
 
 These variables should be made available to the process running Keycloak on your server.
 
@@ -53,6 +56,8 @@ If you are deploying Keycloak on Kubernetes using Helm, here's how to configure 
       value: Description
     - name: DSFR_NOTICE_SEVERITY
       value: info
+    - name: HUBEE_DOMAIN
+      value: basrec.hubee.numerique.gouv.fr
     ...
 ```
 
