@@ -15,6 +15,23 @@
     <meta name="x-apple-disable-message-reformatting" />
     <title>${msg("emailTitle")}</title>
     <style type="text/css">
+        /* Marianne Font Loading */
+        @font-face {
+            font-family: 'Marianne';
+            src: url('${url.resourcesUrl}/Marianne-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Marianne';
+            src: url('${url.resourcesUrl}/Marianne-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
         /* Reset */
         body, table, td, a {
             -webkit-text-size-adjust: 100%;
@@ -135,6 +152,13 @@
                 <!-- Container principal -->
                 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="650" class="email-container" style="max-width: 650px; background-color: #FFFFFF; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 
+                    <!-- Header HubEE -->
+                    <tr>
+                        <td align="center" style="padding: 32px 40px 24px 40px; border-bottom: 1px solid #E5E5E5;">
+                            <img src="${url.resourcesUrl}/logo-hubee.png" alt="HubEE - Hub d'Échange de l'État" style="max-width: 600px; height: auto;" />
+                        </td>
+                    </tr>
+
                     <!-- Contenu principal -->
                     <tr>
                         <td style="padding: 40px;">
@@ -145,7 +169,7 @@
                     <!-- Footer -->
                     <tr>
                         <td style="padding: 24px 40px; background-color: #F6F6F6; border-top: 1px solid #E5E5E5; border-radius: 0 0 8px 8px;">
-                            <p style="margin: 0; color: #666666; font-size: 14px; text-align: center; line-height: 1.5;">
+                            <p style="margin: 0; color: #666666; font-size: 14px; line-height: 1.5;">
                                 Ce message vous a été envoyé automatiquement.<br/>
                                 Merci de ne pas y répondre.
                             </p>

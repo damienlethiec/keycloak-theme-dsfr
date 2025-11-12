@@ -10,8 +10,7 @@ export default defineConfig({
             themeName: "DSFR",
             accountThemeImplementation: "Multi-Page",
             environmentVariables: [
-                { name: "DSFR_THEME_HOME_URL", default: "" },
-                { name: "DSFR_THEME_SERVICE_TITLE", default: "" },
+                { name: "DSFR_THEME_SERVICE_TITLE", default: "HubEE" },
                 { name: "DSFR_THEME_BRAND_TOP", default: "République<br/>Française" },
                 { name: "DSFR_NOTICE_TITLE", default: "" },
                 { name: "DSFR_NOTICE_DESCRIPTION", default: "" },
