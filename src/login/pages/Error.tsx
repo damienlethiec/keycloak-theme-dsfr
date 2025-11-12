@@ -13,9 +13,66 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
         classes
     });
 
-    const { url, message, client } = kcContext;
+    const { url, client, statusCode } = kcContext;
 
     const { msg } = i18n;
+
+    // Detect 404 errors by checking the HTTP status code
+    const is404Error = statusCode === 404;
+
+    // Show custom 404 message only for page not found errors
+    if (is404Error) {
+        return (
+            <Template
+                kcContext={kcContext}
+                i18n={i18n}
+                doUseDefaultCss={doUseDefaultCss}
+                classes={classes}
+                displayMessage={false}
+                headerNode="Page non trouvée"
+            >
+                <Alert
+                    severity="warning"
+                    title="⚠️ Page non trouvée"
+                    description="L'URL à laquelle vous tentez d'accéder n'est plus valide."
+                    className={fr.cx("fr-mb-4w")}
+                />
+
+                <div className={fr.cx("fr-mb-4w")}>
+                    <p className={fr.cx("fr-text--bold")}>
+                        👉 Pour vous connecter sur le Portail HubEE, veuillez cliquer sur l'URL suivante :
+                    </p>
+                    <p>
+                        <a className={fr.cx("fr-link")} href="https://portail.basrec.hubee.numerique.gouv.fr/" target="_blank" rel="noopener noreferrer">
+                            https://portail.basrec.hubee.numerique.gouv.fr/
+                        </a>
+                    </p>
+                </div>
+
+                <Alert
+                    severity="info"
+                    title="💡 NB"
+                    description="Pensez à enregistrer cette adresse dans vos favoris, et à supprimer toute URL commençant par : « https://auth.basrec.hubee.numerique.gouv.fr/ »"
+                    className={fr.cx("fr-mb-4w")}
+                    small
+                />
+
+                <div className={kcClsx("kcFormGroupClass")} style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
+                    {client?.baseUrl !== undefined && (
+                        <a className={fr.cx("fr-link")} href={client.baseUrl}>
+                            {msg("backToApplication")}
+                        </a>
+                    )}
+                    <a className={fr.cx("fr-link")} href={url.loginUrl}>
+                        {msg("backToLogin")}
+                    </a>
+                </div>
+            </Template>
+        );
+    }
+
+    // For other errors (500, etc.), show standard error message
+    const { message } = kcContext;
 
     return (
         <Template
@@ -26,23 +83,24 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
             displayMessage={false}
             headerNode={msg("errorTitle")}
         >
-            <Alert
-                severity="error"
-                description={message?.summary}
-                className={fr.cx("fr-mb-4w")}
-                small
-            />
+            {message !== undefined && (
+                <Alert
+                    severity={message.type}
+                    description={message.summary}
+                    className={fr.cx("fr-mb-4w")}
+                    small
+                />
+            )}
 
-            <div className={kcClsx("kcFormGroupClass")} style={{ display: "flex", justifyContent: "flex-end" }}>
-                {client.baseUrl !== undefined ? (
+            <div className={kcClsx("kcFormGroupClass")} style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
+                {client?.baseUrl !== undefined && (
                     <a className={fr.cx("fr-link")} href={client.baseUrl}>
                         {msg("backToApplication")}
                     </a>
-                ) : (
-                    <a className={fr.cx("fr-link")} href={url.loginUrl}>
-                        {msg("backToLogin")}
-                    </a>
                 )}
+                <a className={fr.cx("fr-link")} href={url.loginUrl}>
+                    {msg("backToLogin")}
+                </a>
             </div>
         </Template>
     );

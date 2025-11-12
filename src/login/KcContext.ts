@@ -11,6 +11,7 @@ export type KcContextExtension = {
         baseUrl?: string;
     };
     darkMode?: boolean;
+    statusCode?: number;
 };
 
 export type KcContextExtensionPerPage = {};
