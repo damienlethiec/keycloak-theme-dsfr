@@ -13,17 +13,17 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
         classes
     });
 
-    const { url, client, statusCode, realm } = kcContext;
+    const { url, client, statusCode, properties } = kcContext;
 
     const { msg } = i18n;
 
     // Detect 404 errors by checking the HTTP status code
     const is404Error = statusCode === 404;
 
-    // Build environment-specific URLs based on realm name
-    const realmName = realm.name;
-    const portailUrl = `https://portail.${realmName}/`;
-    const authUrlPattern = `https://auth.${realmName}/`;
+    // Build environment-specific URLs based on HUBEE_DOMAIN property
+    const hubeeDomain = properties.HUBEE_DOMAIN;
+    const portailUrl = `https://portail.${hubeeDomain}/`;
+    const authUrlPattern = `https://auth.${hubeeDomain}/`;
 
     // Show custom 404 message only for page not found errors
     if (is404Error) {

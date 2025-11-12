@@ -16,6 +16,7 @@ export default defineConfig({
                 { name: "DSFR_NOTICE_TITLE", default: "" },
                 { name: "DSFR_NOTICE_DESCRIPTION", default: "" },
                 { name: "DSFR_NOTICE_SEVERITY", default: "info" },
+                { name: "HUBEE_DOMAIN", default: "basrec.hubee.numerique.gouv.fr" },
             ]
         })
     ]
