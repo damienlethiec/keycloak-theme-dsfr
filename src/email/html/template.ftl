@@ -94,6 +94,13 @@
             text-decoration: underline;
         }
 
+        .link-url {
+            font-size: 14px;
+            color: #666666;
+            word-break: break-all;
+            overflow-wrap: break-word;
+        }
+
         /* DSFR Button - Conforme au min.css officiel */
         .fr-btn {
             display: inline-flex;
