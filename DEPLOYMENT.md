@@ -46,34 +46,47 @@ podman restart keycloak-container
    - **Email theme**
 5. Cliquez sur **Save**
 
-## 🌐 Gestion des traductions
+## ⚙️ Configuration des variables d'environnement
 
-### Via l'interface admin (recommandé)
+Le thème utilise des variables d'environnement pour personnaliser les emails et les pages de login.
 
-1. **Realm Settings** → **Localization**
-2. Sélectionnez l'onglet **Français**
-3. Cliquez sur **Add key**
-4. Ajoutez ou modifiez les clés de traduction
+### Variables pour les emails
 
-**Exemple - Modifier le texte d'expiration du lien :**
-- **Key** : `passwordResetBodyHtml`
-- **Value** :
-```html
-<p>Quelqu'un vient de demander une réinitialisation de mot de passe pour votre compte {2}. Si vous êtes à l'origine de cette requête, veuillez cliquer sur le lien ci-dessous pour le mettre à jour.</p><p><a href="{0}">Lien pour réinitialiser votre mot de passe</a></p><p>Ce lien expirera dans {3}.</p><p>Sinon, veuillez ignorer ce message ; aucun changement ne sera effectué sur votre compte.</p>
+```bash
+# Configuration des événements email pour éviter les doublons (Keycloak 26+)
+# Exclure les événements legacy qui seront supprimés dans Keycloak 27
+KC_SPI_EVENTS_LISTENER_EMAIL_EXCLUDE_EVENTS="UPDATE_PASSWORD,UPDATE_TOTP,REMOVE_TOTP"
 ```
 
-⚠️ **Important** : Gardez les variables `{0}`, `{2}`, `{3}` telles quelles.
+### Variables pour les pages de login
 
-### Via fichiers (non recommandé)
+```bash
+# Nom complet du service (affiché dans les emails via {2})
+DSFR_THEME_SERVICE_TITLE="HubEE - Hub d'Échange de l'État"
+# Marque affichée en haut des pages (supporte HTML)
+DSFR_THEME_BRAND_TOP="République<br/>Française"
 
-Si vous souhaitez gérer les traductions via fichiers :
+# URL de retour vers l'application, à adapter selon environnement
+HUBEE_DOMAIN="basrec.hubee.numerique.gouv.fr"
 
-1. Créez `src/email/messages/messages_fr.properties`
-2. Ajoutez vos traductions personnalisées
-3. Marquez le fichier comme owned : `npx keycloakify own --path "email/messages/messages_fr.properties"`
-4. Rebuild et redéployez le thème
+# Configuration d'une notice sur les pages de login (optionnel)
+DSFR_NOTICE_TITLE="Action requise : Réinitialisation de votre mot de passe"
+DSFR_NOTICE_DESCRIPTION="<p>Pour continuer d'accéder à HubEE, vous devez réinitialiser votre mot de passe...</p>"
+DSFR_NOTICE_SEVERITY="info"  # info, warning, error
+```
 
-**Désavantage** : Nécessite un rebuild complet à chaque modification.
+### Activation des événements email
+
+Pour recevoir les emails de notification (changement de mot de passe, etc.) :
+
+1. **Realm Settings** → **Events** → **Config**
+2. Dans **Event Listeners**, ajoutez `email`
+3. Dans **Event Types**, sélectionnez :
+   - `UPDATE_CREDENTIAL` (remplace UPDATE_PASSWORD à partir de KC 27)
+   - `REMOVE_CREDENTIAL`
+   - `LOGIN_ERROR`
+   - `USER_DISABLED_BY_TEMPORARY_LOCKOUT`
+4. Cliquez sur **Save**
 
 ## 📧 Configuration SMTP
 
