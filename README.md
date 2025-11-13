@@ -47,17 +47,19 @@ If you are deploying Keycloak on Kubernetes using Helm, here's how to configure 
     - name: DSFR_THEME_HOME_URL
       value: https://code.gouv.fr
     - name: DSFR_THEME_SERVICE_TITLE
-      value: CodeGouv
+      value: HubEE - Hub d'Échange de l'État
     - name: DSFR_THEME_BRAND_TOP
-      value: "République<br/>Française"
+      value: République<br/>Française
     - name: DSFR_NOTICE_TITLE
-      value: Title
+      value: Action requise
     - name: DSFR_NOTICE_DESCRIPTION
-      value: Description
+      value: <p>Pour continuer d'accéder à HubEE, vous devez réinitialiser votre mot de passe.</p>
     - name: DSFR_NOTICE_SEVERITY
       value: info
     - name: HUBEE_DOMAIN
       value: basrec.hubee.numerique.gouv.fr
+    - name: KC_SPI_EVENTS_LISTENER_EMAIL_EXCLUDE_EVENTS
+      value: UPDATE_PASSWORD,UPDATE_TOTP,REMOVE_TOTP
     ...
 ```
 
