@@ -55,24 +55,24 @@ Le thème utilise des variables d'environnement pour personnaliser les emails et
 ```bash
 # Configuration des événements email pour éviter les doublons (Keycloak 26+)
 # Exclure les événements legacy qui seront supprimés dans Keycloak 27
-KC_SPI_EVENTS_LISTENER_EMAIL_EXCLUDE_EVENTS="UPDATE_PASSWORD,UPDATE_TOTP,REMOVE_TOTP"
+KC_SPI_EVENTS_LISTENER_EMAIL_EXCLUDE_EVENTS=UPDATE_PASSWORD,UPDATE_TOTP,REMOVE_TOTP
 ```
 
 ### Variables pour les pages de login
 
 ```bash
 # Nom complet du service (affiché dans les emails via {2})
-DSFR_THEME_SERVICE_TITLE="HubEE - Hub d'Échange de l'État"
+DSFR_THEME_SERVICE_TITLE=HubEE - Hub d'Échange de l'État
 # Marque affichée en haut des pages (supporte HTML)
-DSFR_THEME_BRAND_TOP="République<br/>Française"
+DSFR_THEME_BRAND_TOP=République<br/>Française
 
 # URL de retour vers l'application, à adapter selon environnement
-HUBEE_DOMAIN="basrec.hubee.numerique.gouv.fr"
+HUBEE_DOMAIN=basrec.hubee.numerique.gouv.fr
 
 # Configuration d'une notice sur les pages de login (optionnel)
-DSFR_NOTICE_TITLE="Action requise : Réinitialisation de votre mot de passe"
-DSFR_NOTICE_DESCRIPTION="<p>Pour continuer d'accéder à HubEE, vous devez réinitialiser votre mot de passe...</p>"
-DSFR_NOTICE_SEVERITY="info"  # info, warning, error
+DSFR_NOTICE_TITLE=Action requise : Réinitialisation de votre mot de passe
+DSFR_NOTICE_DESCRIPTION=<p>Pour continuer d'accéder à HubEE, vous devez réinitialiser votre mot de passe...</p>
+DSFR_NOTICE_SEVERITY=info  # info, warning, error
 ```
 
 ### Activation des événements email
