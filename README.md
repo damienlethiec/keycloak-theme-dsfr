@@ -29,7 +29,13 @@ Several environment variables can be used to tailor the theme to your needs:
 DSFR_THEME_HOME_URL
 DSFR_THEME_SERVICE_TITLE
 DSFR_THEME_BRAND_TOP
+DSFR_NOTICE_TITLE
+DSFR_NOTICE_DESCRIPTION
+DSFR_NOTICE_SEVERITY
+HUBEE_DOMAIN
 ```
+
+- **HUBEE_DOMAIN**: Domain used for constructing environment-specific URLs in error pages (e.g., `basrec.hubee.numerique.gouv.fr`). This is used to generate portal and auth URLs dynamically.
 
 These variables should be made available to the process running Keycloak on your server.
 
@@ -41,9 +47,19 @@ If you are deploying Keycloak on Kubernetes using Helm, here's how to configure 
     - name: DSFR_THEME_HOME_URL
       value: https://code.gouv.fr
     - name: DSFR_THEME_SERVICE_TITLE
-      value: CodeGouv
+      value: HubEE - Hub d'Échange de l'État
     - name: DSFR_THEME_BRAND_TOP
-      value: "République<br/>Française"
+      value: République<br/>Française
+    - name: DSFR_NOTICE_TITLE
+      value: Action requise
+    - name: DSFR_NOTICE_DESCRIPTION
+      value: <p>Pour continuer d'accéder à HubEE, vous devez réinitialiser votre mot de passe.</p>
+    - name: DSFR_NOTICE_SEVERITY
+      value: info
+    - name: HUBEE_DOMAIN
+      value: basrec.hubee.numerique.gouv.fr
+    - name: KC_SPI_EVENTS_LISTENER_EMAIL_EXCLUDE_EVENTS
+      value: UPDATE_PASSWORD,UPDATE_TOTP,REMOVE_TOTP
     ...
 ```
 
