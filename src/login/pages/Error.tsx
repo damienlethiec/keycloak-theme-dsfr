@@ -1,4 +1,3 @@
-import { getKcClsx } from "keycloakify/login/lib/kcClsx";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
@@ -8,12 +7,7 @@ import { fr } from "@codegouvfr/react-dsfr";
 export default function Error(props: PageProps<Extract<KcContext, { pageId: "error.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
 
-    const { kcClsx } = getKcClsx({
-        doUseDefaultCss,
-        classes
-    });
-
-    const { url, client, statusCode, properties } = kcContext;
+    const { statusCode, properties } = kcContext;
 
     const { msg } = i18n;
 
@@ -62,16 +56,6 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
                     small
                 />
 
-                <div className={kcClsx("kcFormGroupClass")} style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-                    {client?.baseUrl !== undefined && (
-                        <a className={fr.cx("fr-link")} href={client.baseUrl}>
-                            {msg("backToApplication")}
-                        </a>
-                    )}
-                    <a className={fr.cx("fr-link")} href={url.loginUrl}>
-                        {msg("backToLogin")}
-                    </a>
-                </div>
             </Template>
         );
     }
@@ -96,17 +80,6 @@ export default function Error(props: PageProps<Extract<KcContext, { pageId: "err
                     small
                 />
             )}
-
-            <div className={kcClsx("kcFormGroupClass")} style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
-                {client?.baseUrl !== undefined && (
-                    <a className={fr.cx("fr-link")} href={client.baseUrl}>
-                        {msg("backToApplication")}
-                    </a>
-                )}
-                <a className={fr.cx("fr-link")} href={url.loginUrl}>
-                    {msg("backToLogin")}
-                </a>
-            </div>
         </Template>
     );
 }

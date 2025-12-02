@@ -43,20 +43,35 @@ export const AccountLocked: Story = {
 };
 
 /**
- * WithClientBaseUrl:
- * - Purpose: Tests the error page when a client base URL is available.
- * - Scenario: Simulates an error with the option to return to the application.
- * - Key Aspect: Displays a "Back to Application" button in addition to "Back to Login".
+ * SessionExpired:
+ * - Purpose: Tests the error page for session expiration.
+ * - Scenario: Simulates a session that has expired.
  */
-export const WithClientBaseUrl: Story = {
+export const SessionExpired: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
                 message: {
                     summary: "Session expired. Please log in again."
-                },
-                client: {
-                    baseUrl: "https://hubee.com"
+                }
+            }}
+        />
+    )
+};
+
+/**
+ * NotFound (404):
+ * - Purpose: Tests the custom 404 error page.
+ * - Scenario: Simulates a page not found error with HubEE-specific messaging.
+ * - Key Aspect: Displays custom 404 content with portal URL based on HUBEE_DOMAIN.
+ */
+export const NotFound: Story = {
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                statusCode: 404,
+                properties: {
+                    HUBEE_DOMAIN: "basrec.hubee.numerique.gouv.fr"
                 }
             }}
         />
