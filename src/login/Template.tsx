@@ -46,6 +46,18 @@ export default function Template(props: Props) {
 
     const { auth, url, message, isAppInitiatedAction } = kcContext;
 
+    const showNotice = function () {
+        return (kcContext.properties.DSFR_NOTICE_TITLE_LOGOUT_MISSING_PARAMETERS || kcContext.properties.DSFR_NOTICE_DESCRIPTION_LOGOUT_MISSING_PARAMETERS) || (kcContext.properties.DSFR_NOTICE_TITLE || kcContext.properties.DSFR_NOTICE_DESCRIPTION);
+    };
+
+    const titleNotice = function () {
+        return window.location.pathname.includes("logout") && !window.location.search.includes("id_token_hint") ? kcContext.properties.DSFR_NOTICE_TITLE_LOGOUT_MISSING_PARAMETERS : kcContext.properties.DSFR_NOTICE_TITLE;
+    };
+
+    const descriptionNotice = function () {
+        return window.location.pathname.includes("logout") && !window.location.search.includes("id_token_hint") ? kcContext.properties.DSFR_NOTICE_DESCRIPTION_LOGOUT_MISSING_PARAMETERS : kcContext.properties.DSFR_NOTICE_DESCRIPTION;
+    };
+
     useEffect(() => {
         document.title = documentTitle ?? msgStr("loginTitle", kcContext.realm.displayName);
     }, []);
@@ -92,20 +104,20 @@ export default function Template(props: Props) {
                 }
             />
             <main role="main" id="content">
-                {(kcContext.properties.DSFR_NOTICE_TITLE || kcContext.properties.DSFR_NOTICE_DESCRIPTION) && (
+                {showNotice() && (
                     <Notice
                         severity={getNoticeSeverityOrDefault(kcContext.properties.DSFR_NOTICE_SEVERITY)}
                         title={
                             <span
                                 dangerouslySetInnerHTML={{
-                                    __html: kcContext.properties.DSFR_NOTICE_TITLE
+                                    __html: titleNotice()
                                 }}
                             />
                         }
                         description={
                             <span
                                 dangerouslySetInnerHTML={{
-                                    __html: kcContext.properties.DSFR_NOTICE_DESCRIPTION
+                                    __html: descriptionNotice()
                                 }}
                             />
                         }
