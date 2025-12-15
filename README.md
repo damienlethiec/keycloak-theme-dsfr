@@ -31,6 +31,7 @@ DSFR_THEME_SERVICE_TITLE
 DSFR_THEME_BRAND_TOP
 DSFR_NOTICE_TITLE
 DSFR_NOTICE_DESCRIPTION
+DSFR_NOTICE_DESCRIPTION_TOKEN_MISSING
 DSFR_NOTICE_SEVERITY
 HUBEE_DOMAIN
 ```
@@ -52,8 +53,12 @@ If you are deploying Keycloak on Kubernetes using Helm, here's how to configure 
       value: République<br/>Française
     - name: DSFR_NOTICE_TITLE
       value: Action requise
+    - name: DSFR_NOTICE_TITLE_LOGOUT_MISSING_PARAMETERS
+      value: Erreur survenue
     - name: DSFR_NOTICE_DESCRIPTION
       value: <p>Pour continuer d'accéder à HubEE, vous devez réinitialiser votre mot de passe.</p>
+    - name: DSFR_NOTICE_DESCRIPTION_LOGOUT_MISSING_PARAMETERS
+      value: <p>Un problème est survenu lors de la déconnexion, <a href="https://portail.hubee.numerique.gouv.fr">accéder au portail</a></p>
     - name: DSFR_NOTICE_SEVERITY
       value: info
     - name: HUBEE_DOMAIN

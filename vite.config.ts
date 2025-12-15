@@ -13,7 +13,9 @@ export default defineConfig({
                 { name: "DSFR_THEME_SERVICE_TITLE", default: "HubEE" },
                 { name: "DSFR_THEME_BRAND_TOP", default: "République<br/>Française" },
                 { name: "DSFR_NOTICE_TITLE", default: "" },
+                { name: "DSFR_NOTICE_TITLE_LOGOUT_MISSING_PARAMETERS", default: "" },
                 { name: "DSFR_NOTICE_DESCRIPTION", default: "" },
+                { name: "DSFR_NOTICE_DESCRIPTION_LOGOUT_MISSING_PARAMETERS", default: "" },
                 { name: "DSFR_NOTICE_SEVERITY", default: "info" },
                 { name: "HUBEE_DOMAIN", default: "basrec.hubee.numerique.gouv.fr" },
             ]
