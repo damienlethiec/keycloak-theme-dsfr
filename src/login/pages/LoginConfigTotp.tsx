@@ -34,9 +34,10 @@ export default function LoginConfigTOTP(props: PageProps<Extract<KcContext, { pa
                     <li>
                         <p>{msg("loginTotpStep1")}</p>
                         <ul id="kc-totp-supported-apps">
-                            {totp.supportedApplications.map(app => (
-                                <li key={app}>{advancedMsg(app)}</li>
-                            ))}
+                            <li><strong>Proton Authenticator</strong> (recommandé)</li>
+                            <li>Bitwarden Authenticator</li>
+                            <li>Microsoft Authenticator</li>
+                            <li>Google Authenticator</li>
                         </ul>
                     </li>
 
