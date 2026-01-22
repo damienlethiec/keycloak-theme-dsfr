@@ -1,0 +1,21 @@
+---
+stages:
+  # build: build the keycloak theme and upload the jar in the package registry
+  - build
+
+variables:
+  PACKAGE_NAME: keycloak-hubee-theme
+  JAR_NAME: keycloak-theme-for-kc-26.2-and-above.jar
+  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic/${PACKAGE_NAME}/${CI_COMMIT_TAG}"
+
+build:
+  stage: build
+  image: node:lts-alpine
+  script:
+    - apk add maven curl
+    - yarn install --immutable
+    - yarn build-keycloak-theme
+    - |
+      curl --header "JOB-TOKEN: ${CI_JOB_TOKEN}" --upload-file "dist_keycloak/${JAR_NAME}" "${PACKAGE_REGISTRY_URL}/${JAR_NAME}"
+  rules:
+    - if: $CI_COMMIT_TAG
