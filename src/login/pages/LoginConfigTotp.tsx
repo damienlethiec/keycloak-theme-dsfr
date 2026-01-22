@@ -17,7 +17,7 @@ export default function LoginConfigTOTP(props: PageProps<Extract<KcContext, { pa
 
     const { url, messagesPerField, totp, mode, isAppInitiatedAction } = kcContext;
 
-    const { msg, msgStr, advancedMsg } = i18n;
+    const { msg, msgStr } = i18n;
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
 
     return (
