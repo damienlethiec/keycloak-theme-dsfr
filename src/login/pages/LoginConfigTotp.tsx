@@ -109,12 +109,12 @@ export default function LoginConfigTOTP(props: PageProps<Extract<KcContext, { pa
                     method="post"
                 >
                     <Input
-                        label={msg("authenticatorCode")}
-                        state={messagesPerField.existsError("totp") ? "error" : "default"}
-                        stateRelatedMessage={messagesPerField.getFirstError("totp")}
+                        label={msg("loginTotpDeviceName")}
+                        state={messagesPerField.existsError("userLabel") ? "error" : "default"}
+                        stateRelatedMessage={messagesPerField.getFirstError("userLabel")}
                         nativeInputProps={{
-                            name: "totp",
-                            required: true,
+                            required: (totp.otpCredentials ?? []).length > 1,
+                            name: "userLabel",
                             autoFocus: true,
                             defaultValue: "",
                             tabIndex: 1
@@ -124,13 +124,12 @@ export default function LoginConfigTOTP(props: PageProps<Extract<KcContext, { pa
                     {mode && <input type="hidden" id="mode" name="mode" value={mode} />}
 
                     <Input
-                        label={msg("loginTotpDeviceName")}
-                        state={messagesPerField.existsError("userLabel") ? "error" : "default"}
-                        stateRelatedMessage={messagesPerField.getFirstError("userLabel")}
+                        label={msg("authenticatorCode")}
+                        state={messagesPerField.existsError("totp") ? "error" : "default"}
+                        stateRelatedMessage={messagesPerField.getFirstError("totp")}
                         nativeInputProps={{
-                            required: (totp.otpCredentials ?? []).length > 1,
-                            name: "userLabel",
-                            autoFocus: true,
+                            name: "totp",
+                            required: true,
                             defaultValue: "",
                             tabIndex: 2
                         }}
