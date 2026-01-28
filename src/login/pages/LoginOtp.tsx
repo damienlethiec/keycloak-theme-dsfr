@@ -70,6 +70,8 @@ export default function LoginOtp(props: PageProps<Extract<KcContext, { pageId: "
                     </div>
                 )}
 
+                <p className={fr.cx("fr-mb-3w")}>{msg("loginOtpInstruction")}</p>
+
                 <Input
                     label={msg("loginOtpOneTime")}
                     state={messagesPerField.existsError("totp") ? "error" : "default"}

@@ -39,6 +39,15 @@ export default function LoginConfigTOTP(props: PageProps<Extract<KcContext, { pa
                             <li>Microsoft Authenticator</li>
                             <li>Google Authenticator</li>
                         </ul>
+                        <p>
+                            <a
+                                href="https://docs.numerique.gouv.fr/docs/8721b915-4757-43bb-b37a-568376673d00/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {msg("loginTotpGuideLink")}
+                            </a>
+                        </p>
                     </li>
 
                     {mode === "manual" ? (
@@ -95,7 +104,6 @@ export default function LoginConfigTOTP(props: PageProps<Extract<KcContext, { pa
                     )}
                     <li>
                         <p>{msg("loginTotpStep3")}</p>
-                        <p>{msg("loginTotpStep3DeviceName")}</p>
                     </li>
                 </ol>
                 <form
